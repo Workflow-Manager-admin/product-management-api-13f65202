@@ -1,9 +1,10 @@
 const express = require('express');
 const healthController = require('../controllers/health');
+const productsRouter = require('./products');
 
 const router = express.Router();
-// Health endpoint
 
+// Health endpoint
 /**
  * @swagger
  * /:
@@ -31,5 +32,8 @@ const router = express.Router();
  *                   example: development
  */
 router.get('/', healthController.check.bind(healthController));
+
+// Product CRUD API endpoints
+router.use('/products', productsRouter);
 
 module.exports = router;
